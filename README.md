@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 
 
 # 🚀 3-Day Python DSA Revision Bootcamp
 
+=======
+# 🚀 3-Day Python DSA Revision Bootcamp
+
+>>>>>>> a005cfd9848b8046904dfa5a11888f821031e6fe
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![DSA](https://img.shields.io/badge/Data_Structures-Algorithms-FF6F00?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active_Revision-success?style=for-the-badge)
@@ -109,4 +114,8 @@ Make sure you are comfortable with these built-in modules:
 - `math` and `bisect` (Binary search utilities)
 
 ---
+<<<<<<< HEAD
 *Happy Coding! Consistency is key. You've got this!* 🚀
+=======
+*Happy Coding! Consistency is key. You've got this!* 🚀
+>>>>>>> a005cfd9848b8046904dfa5a11888f821031e6fe
