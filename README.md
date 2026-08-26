@@ -35,6 +35,42 @@ prefix_sums = list(accumulate(nums))
 - [ ] Solve Subarray Sum Equals K (Prefix Sum + Hash Map).
 - [ ] Apply the Difference Array technique to a range-addition problem.
 
+### 🧱 Important Data Structures to Know in Day 1
+- **Stack:** LIFO structure, used in expression evaluation, backtracking, and recursion simulation.
+- **Queue:** FIFO structure, used for BFS traversal, scheduling, and task processing.
+- **Priority Queue:** Gives the smallest or largest element first using a heap, commonly used in greedy algorithms and shortest path problems.
+- **Tree:** Hierarchical structure where each node can have left/right children; essential for BSTs, heaps, and traversal problems.
+
+### 💻 Core Python Implementations
+```python
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, value):
+        self.items.append(value)
+
+    def pop(self):
+        return self.items.pop()
+
+class Queue:
+    def __init__(self):
+        self.items = deque()
+
+    def enqueue(self, value):
+        self.items.append(value)
+
+    def dequeue(self):
+        return self.items.popleft()
+```
+
+### 🌳 Tree Basics
+- **Root:** Top node of a tree.
+- **Parent / Child:** Relationship between connected nodes.
+- **Leaf:** Node without children.
+- **Height / Depth:** Distance from root to a node.
+- **Traversal:** Inorder, Preorder, Postorder, BFS.
+
 ---
 
 ## 🗓️ Day 2: Bit Manipulation & Low-Level Optimization
