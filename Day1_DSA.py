@@ -209,26 +209,29 @@ class BinaryTree:
                 current = current.right
         return False
 
-    def inorder(self, node: TreeNode | None = None) -> list[int]:
-        if node is None:
-            node = self.root
+    def _inorder(self, node: TreeNode | None) -> list[int]:
         if node is None:
             return []
-        return self.inorder(node.left) + [node.value] + self.inorder(node.right)
+        return self._inorder(node.left) + [node.value] + self._inorder(node.right)
 
-    def preorder(self, node: TreeNode | None = None) -> list[int]:
-        if node is None:
-            node = self.root
-        if node is None:
-            return []
-        return [node.value] + self.preorder(node.left) + self.preorder(node.right)
+    def inorder(self) -> list[int]:
+        return self._inorder(self.root)
 
-    def postorder(self, node: TreeNode | None = None) -> list[int]:
-        if node is None:
-            node = self.root
+    def _preorder(self, node: TreeNode | None) -> list[int]:
         if node is None:
             return []
-        return self.postorder(node.left) + self.postorder(node.right) + [node.value]
+        return [node.value] + self._preorder(node.left) + self._preorder(node.right)
+
+    def preorder(self) -> list[int]:
+        return self._preorder(self.root)
+
+    def _postorder(self, node: TreeNode | None) -> list[int]:
+        if node is None:
+            return []
+        return self._postorder(node.left) + self._postorder(node.right) + [node.value]
+
+    def postorder(self) -> list[int]:
+        return self._postorder(self.root)
 
     def bfs(self) -> list[int]:
         if self.root is None:
@@ -245,6 +248,77 @@ class BinaryTree:
             if node.right is not None:
                 queue.append(node.right)
 
+        return values
+
+
+# ------------------------------
+# Linked List
+# ------------------------------
+class Node:
+    """A node in a singly linked list."""
+
+    def __init__(self, value: int, next_node: "Node | None" = None) -> None:
+        self.value = value
+        self.next = next_node
+
+
+class LinkedList:
+    """Singly linked list with append, prepend, delete, and search operations."""
+
+    def __init__(self) -> None:
+        self.head: Node | None = None
+
+    def append(self, value: int) -> None:
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            return
+
+        current = self.head
+        while current.next is not None:
+            current = current.next
+        current.next = new_node
+
+    def prepend(self, value: int) -> None:
+        self.head = Node(value, self.head)
+
+    def delete(self, value: int) -> None:
+        if self.head is None:
+            return
+
+        if self.head.value == value:
+            self.head = self.head.next
+            return
+
+        current = self.head
+        while current.next is not None and current.next.value != value:
+            current = current.next
+
+        if current.next is not None:
+            current.next = current.next.next
+
+    def search(self, value: int) -> bool:
+        current = self.head
+        while current is not None:
+            if current.value == value:
+                return True
+            current = current.next
+        return False
+
+    def length(self) -> int:
+        count = 0
+        current = self.head
+        while current is not None:
+            count += 1
+            current = current.next
+        return count
+
+    def display(self) -> list[int]:
+        values: list[int] = []
+        current = self.head
+        while current is not None:
+            values.append(current.value)
+            current = current.next
         return values
 
 
@@ -296,6 +370,17 @@ def run_examples() -> None:
     print("Postorder:", tree.postorder())
     print("BFS:", tree.bfs())
     print("Search 6:", tree.search(6))
+
+    print("\nLinked list demo:")
+    linked = LinkedList()
+    for value in [10, 20, 30]:
+        linked.append(value)
+    linked.prepend(5)
+    print("List after append/prepend:", linked.display())
+    print("Length:", linked.length())
+    print("Search 20:", linked.search(20))
+    linked.delete(20)
+    print("After deleting 20:", linked.display())
 
 
 if __name__ == "__main__":
